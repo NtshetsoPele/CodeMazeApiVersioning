@@ -9,8 +9,8 @@ namespace Tests
 {
     public class StringListControllerV1Tests : IClassFixture<WebApplicationFactory<Program>>
     {
-        private HttpClient _httpClient;
-        private WebApplicationFactory<Program> _factory;
+        private readonly HttpClient _httpClient;
+        private readonly WebApplicationFactory<Program> _factory;
 
         public StringListControllerV1Tests(WebApplicationFactory<Program> factory)
         {

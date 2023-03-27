@@ -13,21 +13,25 @@ builder.Services.AddApiVersioning(
     {
         opts.AssumeDefaultVersionWhenUnspecified = true;
         opts.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
-        // Shows actively supported API versions
-        // Adds both 'api-supported-versions' and 'api-deprecated-versions' headers to our response
+        // Shows actively supported API versions.
+        // Adds both 'api-supported-versions' and 'api-deprecated-versions'
+        // headers to our response.
         opts.ReportApiVersions = true;
         // Supports different versioning schemes
-        // Combines different ways of reading the API version (from a query string, request header, and media type)
+        // Combines different ways of reading the API version (from a query
+        // string, request header, and media type).
         opts.ApiVersionReader = ApiVersionReader.Combine(
-            new QueryStringApiVersionReader("api-version"),
-            new HeaderApiVersionReader("X-Version"),
-            new MediaTypeApiVersionReader("ver"));
+            new QueryStringApiVersionReader(parameterNames: "api-version"),
+            new HeaderApiVersionReader(headerNames: "X-Version"),
+            new MediaTypeApiVersionReader(parameterName: "ver"));
     });
 builder.Services.AddVersionedApiExplorer(
     (ApiExplorerOptions opts) =>
     {
-        opts.GroupNameFormat = "'v'VVV"; // Formats the version as “'v'major[.minor][-status]”
-        opts.SubstituteApiVersionInUrl = true; // Only necessary when versioning by the URI segment?
+        // Formats the version as "'v'major[.minor][-status]".
+        opts.GroupNameFormat = "'v'VVV";
+        // Only necessary when versioning by the URI segment?
+        opts.SubstituteApiVersionInUrl = true; 
     });
 
 

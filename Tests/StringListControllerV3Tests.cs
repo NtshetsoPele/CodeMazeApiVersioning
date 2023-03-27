@@ -4,12 +4,13 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
+
 namespace Tests
 {
     public class StringListControllerV3Tests : IClassFixture<WebApplicationFactory<Program>>
     {
-        private HttpClient _httpClient;
-        private WebApplicationFactory<Program> _factory;
+        private readonly HttpClient _httpClient;
+        private readonly WebApplicationFactory<Program> _factory;
 
         public StringListControllerV3Tests(WebApplicationFactory<Program> factory)
         {

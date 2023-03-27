@@ -2,16 +2,16 @@
 
 namespace VersioningRestAPI.V2.Controllers
 {
-    // URIs stay clean because we only modify the Accept header values
-    // The scheme preserves our URIs between versions
-    // Send versioning information by providing X-Version in the request’s
+    // URIs stay clean because we only modify the Accept header values.
+    // The scheme preserves our URIs between versions.
+    // Send versioning information by providing 'X-Version' in the request's
     // header (as we’ve configured with the 'ApiVersionReader' class in
-    // our configuration)
+    // our configuration).
 
     // In addition to sending version information in headers,
-    // we can do the same via media type header 
-    // In our configuration, we use MediaTypeApiVersionReader("ver")
-    // to state that 'ver' should be a version information holder
+    // we can do the same via media type headers. 
+    // In our configuration, we use 'MediaTypeApiVersionReader("ver")'
+    // to state that 'ver' should be a version information holder.
     [ApiController]
     [Route("api/[controller]")]
     [ApiVersion("2.0")]
@@ -20,7 +20,7 @@ namespace VersioningRestAPI.V2.Controllers
         [HttpGet()]
         public IEnumerable<string> Get()
         {
-            return Data.Summaries.Where(s => s.StartsWith("S"));
+            return Data.Summaries.Where((string s) => s.StartsWith("S"));
         }
     }
 }
